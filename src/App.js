@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import AppCustomers from "./pages/AppCustomers";
 import AppProducts from "./pages/AppProducts";
+import AddCustomer from "./pages/AddCustomer";
 
 const listOfCustomers = [
   {
@@ -36,6 +37,18 @@ function App() {
     );
   };
 
+  const handleSubmit = (event, firstName, lastName, dateOfBirth) => {
+    event.preventDefault();
+
+    let newCustomer = {
+      firstName: firstName,
+      lastName: lastName,
+      dateOfBirth: dateOfBirth,
+    };
+
+    setCustomers((prevState) => [...prevState, newCustomer]);
+  };
+
   return (
     <Routes>
       <Route
@@ -43,6 +56,10 @@ function App() {
         element={<AppCustomers customers={customers} onRemove={onRemove} />}
       ></Route>
       <Route path="/products" element={<AppProducts />}></Route>
+      <Route
+        path="/addcustomers"
+        element={<AddCustomer handleSubmit={handleSubmit} />}
+      ></Route>
     </Routes>
   );
 }

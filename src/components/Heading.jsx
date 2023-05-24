@@ -1,17 +1,24 @@
+import { Link } from "react-router-dom";
+
 const Heading = () => {
   return (
     <div className="container">
       <header className="d-flex justify-content-center py-3">
         <ul className="nav nav-pills">
           <li className="nav-item">
-            <a href="/customers" className="nav-link">
+            <Link to="/customers" className="nav-link">
               Customers
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="/products" className="nav-link">
+            <Link to="/products" className="nav-link">
               Products
-            </a>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/addcustomers" className="nav-link">
+              Add Customers
+            </Link>
           </li>
         </ul>
       </header>
