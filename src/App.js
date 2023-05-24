@@ -4,6 +4,7 @@ import { useState } from "react";
 import AppCustomers from "./pages/AppCustomers";
 import AppProducts from "./pages/AppProducts";
 import AddCustomer from "./pages/AddCustomer";
+import SingleCustomer from "./components/SingleCustomer";
 
 const listOfCustomers = [
   {
@@ -59,6 +60,10 @@ function App() {
       <Route
         path="/addcustomers"
         element={<AddCustomer handleSubmit={handleSubmit} />}
+      ></Route>
+      <Route
+        path="/customers/:id"
+        element={<SingleCustomer customers={customers} />}
       ></Route>
     </Routes>
   );

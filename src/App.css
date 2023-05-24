@@ -148,3 +148,19 @@ tbody a:hover {
 .customersForm a:hover {
   background-color: #555555;
 }
+
+.seeCustomer {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.seeCustomer ul {
+  list-style-type: none;
+}
+.seeCustomer li {
+  margin: 10px;
+}
+.seeCustomer li h2 {
+  color: rgb(56, 112, 134);
+}

@@ -9,6 +9,7 @@ const AllCustomers = ({ customers, onRemove }) => {
             <th>Ime</th>
             <th>Prezime</th>
             <th>Datum rodjenja</th>
+            <th>Poslednje kupovine</th>
             <th>Akcija</th>
           </tr>
         </thead>
