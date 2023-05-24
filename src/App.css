@@ -164,3 +164,9 @@ tbody a:hover {
 .seeCustomer li h2 {
   color: rgb(56, 112, 134);
 }
+
+.productsList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

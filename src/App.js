@@ -6,6 +6,8 @@ import AppProducts from "./pages/AppProducts";
 import AddCustomer from "./pages/AddCustomer";
 import SingleCustomer from "./components/SingleCustomer";
 
+const listOfProducts = ["hleb", "mleko", "jaja", "banana"];
+
 const listOfCustomers = [
   {
     firstName: "Nikola",
@@ -56,7 +58,10 @@ function App() {
         path="/customers"
         element={<AppCustomers customers={customers} onRemove={onRemove} />}
       ></Route>
-      <Route path="/products" element={<AppProducts />}></Route>
+      <Route
+        path="/products"
+        element={<AppProducts products={listOfProducts} />}
+      ></Route>
       <Route
         path="/addcustomers"
         element={<AddCustomer handleSubmit={handleSubmit} />}
