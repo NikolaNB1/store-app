@@ -9,15 +9,19 @@ import SingleCustomer from "./pages/SingleCustomer";
 const listOfProducts = [
   {
     name: "Hleb",
+    quantity: 0,
   },
   {
     name: "Mleko",
+    quantity: 0,
   },
   {
     name: "Jaja",
+    quantity: 0,
   },
   {
     name: "Banane",
+    quantity: 0,
   },
 ];
 
@@ -74,6 +78,68 @@ function App() {
     );
   };
 
+  const addQuantity = (index) => {
+    setProducts((prevState) => {
+      const updatedProducts = prevState.map((product, id) => {
+        if (id === index) {
+          return {
+            ...product,
+            quantity: product.quantity + 1,
+          };
+        }
+        return product;
+      });
+      return updatedProducts;
+    });
+
+    setProductsCopy((prevState) => {
+      const updatedProductsCopy = prevState.map((product, id) => {
+        if (id === index) {
+          return {
+            ...product,
+            quantity: product.quantity + 1,
+          };
+        }
+        return product;
+      });
+      return updatedProductsCopy;
+    });
+  };
+
+  const subtractQuantity = (index) => {
+    setProducts((prevState) => {
+      const updatedProducts = prevState.map((product, id) => {
+        if (product.quantity === 0) {
+          return product;
+        }
+        if (id === index) {
+          return {
+            ...product,
+            quantity: product.quantity - 1,
+          };
+        }
+        return product;
+      });
+      return updatedProducts;
+    });
+
+    setProductsCopy((prevState) => {
+      const updatedProductsCopy = prevState.map((product, id) => {
+        if (product.quantity === 0) {
+          return product;
+        }
+        if (id === index) {
+          return {
+            ...product,
+            quantity: product.quantity - 1,
+          };
+        }
+        return product;
+      });
+      return updatedProductsCopy;
+    });
+  };
+
   return (
     <Routes>
       <Route
@@ -83,7 +149,12 @@ function App() {
       <Route
         path="/products"
         element={
-          <AppProducts products={products} handleSearch={handleSearch} />
+          <AppProducts
+            products={products}
+            handleSearch={handleSearch}
+            addQuantity={addQuantity}
+            subtractQuantity={subtractQuantity}
+          />
         }
       ></Route>
       <Route

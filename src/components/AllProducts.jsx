@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-const AllProducts = ({ products, handleSearch }) => {
+const AllProducts = ({
+  products,
+  handleSearch,
+  addQuantity,
+  subtractQuantity,
+}) => {
   const [state, setState] = useState({
     search: "",
   });
@@ -40,12 +45,34 @@ const AllProducts = ({ products, handleSearch }) => {
           <thead>
             <tr>
               <th>Naziv proizvoda</th>
+              <th>Dodaj</th>
+              <th>Kolicina</th>
+              <th>Oduzmi</th>
             </tr>
           </thead>
           <tbody>
             {products.map((product, index) => (
               <tr key={index}>
                 <td>{product.name}</td>
+                <td>
+                  <button
+                    className="btn btn-success"
+                    onClick={() => addQuantity(index)}
+                    style={{ borderRadius: "20px" }}
+                  >
+                    +
+                  </button>
+                </td>
+                <td>{product.quantity}</td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => subtractQuantity(index)}
+                    style={{ borderRadius: "20px" }}
+                  >
+                    -
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

@@ -1,9 +1,19 @@
 import AllProducts from "../components/AllProducts";
 
-const AppProducts = ({ products, handleSearch }) => {
+const AppProducts = ({
+  products,
+  handleSearch,
+  addQuantity,
+  subtractQuantity,
+}) => {
   return (
     <div>
-      <AllProducts products={products} handleSearch={handleSearch} />
+      <AllProducts
+        products={products}
+        handleSearch={handleSearch}
+        addQuantity={addQuantity}
+        subtractQuantity={subtractQuantity}
+      />
     </div>
   );
 };
