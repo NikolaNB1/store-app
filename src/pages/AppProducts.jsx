@@ -1,9 +1,9 @@
 import AllProducts from "../components/AllProducts";
 
-const AppProducts = ({ products }) => {
+const AppProducts = ({ products, handleSearch }) => {
   return (
     <div>
-      <AllProducts products={products} />
+      <AllProducts products={products} handleSearch={handleSearch} />
     </div>
   );
 };

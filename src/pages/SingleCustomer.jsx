@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import SeeCustomer from "./SeeCustomer";
+import SeeCustomer from "../components/SeeCustomer";
 
 const SingleCustomer = ({ customers }) => {
   const { id } = useParams();

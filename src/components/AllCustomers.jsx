@@ -1,4 +1,4 @@
-import Customer from "./Customer";
+import { Link } from "react-router-dom";
 
 const AllCustomers = ({ customers, onRemove }) => {
   return (
@@ -15,12 +15,27 @@ const AllCustomers = ({ customers, onRemove }) => {
         </thead>
         <tbody>
           {customers.map((customer, index) => (
-            <Customer
-              key={index}
-              customer={customer}
-              index={index}
-              onRemove={onRemove}
-            />
+            <tr key={index}>
+              <td>{customer.firstName}</td>
+              <td>{customer.lastName}</td>
+              <td>{customer.dateOfBirth}</td>
+              <td>
+                <Link
+                  to={`/customers/${index}`}
+                  className="btn btn-outline-success"
+                >
+                  Pogledaj
+                </Link>
+              </td>
+              <td>
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={() => onRemove(customer.firstName)}
+                >
+                  Remove
+                </button>
+              </td>
+            </tr>
           ))}
         </tbody>
       </table>

@@ -41,7 +41,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  text-transform: capitalize;
 }
 
 .customersList {
@@ -55,6 +54,7 @@ table {
   border-collapse: collapse;
   width: auto;
   font-family: Arial, sans-serif;
+  text-align: center;
 }
 
 thead th {
@@ -62,7 +62,6 @@ thead th {
   color: #333333;
   font-weight: bold;
   padding: 8px;
-  text-align: left;
 }
 
 tbody td {
@@ -85,7 +84,7 @@ tbody a {
 }
 
 tbody a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .customersForm {
@@ -166,6 +165,12 @@ tbody a:hover {
 }
 
 .productsList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search {
   display: flex;
   align-items: center;
   justify-content: center;
