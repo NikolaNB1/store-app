@@ -5,6 +5,7 @@ import AppCustomers from "./pages/AppCustomers";
 import AppProducts from "./pages/AppProducts";
 import AddCustomer from "./pages/AddCustomer";
 import SingleCustomer from "./pages/SingleCustomer";
+import Buy from "./pages/Buy";
 
 const listOfProducts = [
   {
@@ -30,21 +31,25 @@ const listOfCustomers = [
     firstName: "Nikola",
     lastName: "Babic",
     dateOfBirth: new Date().toDateString(),
+    cart: [],
   },
   {
     firstName: "Marko",
-    lastName: "Babic",
+    lastName: "Markovic",
     dateOfBirth: new Date().toDateString(),
+    cart: [],
   },
   {
     firstName: "Ivan",
-    lastName: "Babic",
+    lastName: "Ivanic",
     dateOfBirth: new Date().toDateString(),
+    cart: [],
   },
   {
     firstName: "Petar",
-    lastName: "Babic",
+    lastName: "Peric",
     dateOfBirth: new Date().toDateString(),
+    cart: [],
   },
 ];
 
@@ -52,6 +57,43 @@ function App() {
   const [customers, setCustomers] = useState(listOfCustomers);
   const [products, setProducts] = useState(listOfProducts);
   const [productsCopy, setProductsCopy] = useState(listOfProducts);
+
+  const addToCart = (firstName, lastName, product, quantity) => {
+    setCustomers((prevState) =>
+      prevState.map((customer) => {
+        if (
+          customer.firstName === firstName &&
+          customer.lastName === lastName
+        ) {
+          let isProductInCart = false;
+
+          const updatedCart = customer.cart.map((item) => {
+            if (item.name === product.name) {
+              isProductInCart = true;
+              return {
+                ...item,
+                quantity: item.quantity + quantity,
+              };
+            }
+            return item;
+          });
+
+          if (!isProductInCart) {
+            updatedCart.push({
+              name: product.name,
+              quantity: quantity,
+            });
+          }
+
+          return {
+            ...customer,
+            cart: updatedCart,
+          };
+        }
+        return customer;
+      })
+    );
+  };
 
   const onRemove = (firstName) => {
     setCustomers((prevState) =>
@@ -164,6 +206,17 @@ function App() {
       <Route
         path="/customers/:id"
         element={<SingleCustomer customers={customers} />}
+      ></Route>
+      <Route
+        path="/products/:id"
+        element={
+          <Buy
+            products={products}
+            customers={customers}
+            subtractQuantity={subtractQuantity}
+            addToCart={addToCart}
+          />
+        }
       ></Route>
     </Routes>
   );
